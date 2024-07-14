@@ -1,6 +1,22 @@
 body{
     font-family: 'Times New Roman', Times, serif;
     background: linear-gradient(to right, #efba8e 0%, #F5E8DD 40%, #F5E8DD 40%, transparent 100%);
+    
+}
+
+p{
+    font-size: 22px;
+}
+
+h1{
+    font-weight: bolder;
+    font-size: 50px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+h2{
+    margin-bottom: 30px;
 }
 
 iframe {
@@ -60,14 +76,6 @@ footer{
     border-radius: 50%;
 }
 
-h1{
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-h2{
-    margin-bottom: 30px;
-}
 
 .list-unstyled {
     margin: 10px 0px;
@@ -181,4 +189,30 @@ button{
 
 .btn{
     text-align: center;
+}
+
+.project{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-top: 50px;
+}
+
+.p-1{
+    text-align: center;
+}
+
+.resume{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.accordion-item{
+    width: 900px;
+    margin: 0;
+    padding: 0;
 }
