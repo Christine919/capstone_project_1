@@ -11,25 +11,48 @@
 <iframe src="./header.html"></iframe>
 
 <body>
-    <h1>Contact Me</h1>
-    <form action="">
-        <label for="fname">First Name:</label>
-        <input type="text" name="fname" id="fname" ><br>
-        <label for="lname">Last Name:</label>
-        <input type="text" name="lname" id="lname"><br>
-        <label for="email">Email:</label>
-        <input type="text" name="email" id="email"><br>
-        <label for="phone">Phone Number:</label>
-        <input type="text" name="phone" id="phone"><br>
-        <textarea name="phone" id="phone" rows="10">Please write your inquiry here.</textarea><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="grid-container">
+        <div class="item1">
+            <h1>Contact Me</h1>
+        </div>
 
-    <hr>
+        <div class="item2">
+            <form action="">
+                <div class="row">
+                    <div class="col">
+                      <input type="text" class="form-control form-control-lg" placeholder="First name" aria-label="First name">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control form-control-lg" placeholder="Last name" aria-label="Last name">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <input type="text" class="form-control form-control-lg" placeholder="Email" aria-label="Email">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control form-control-lg" placeholder="Phone number" aria-label="Phone number">
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="3">Please write your inquiry here.</textarea>
+                  </div>
+                  <div class="d-grid gap-2">
+                    <input class="btn btn-primary btn-lg" type="submit" value="Submit">
+                  </div>
+            </form>
+        </div>
 
-    <p>Email: chrisng219@gmail.com</p>
-    <p>Phone Number: +060 10 885 8117</p>
-
+        <div class="item3">
+            <p>I’d love to hear from you! <br>
+                Whether you have a question, a project idea, or just want to connect, feel free to reach out. <br>
+                Let’s collaborate and create something amazing together!</p>
+            <img src="./src/image/Screenshot 2024-03-10 170232.png" alt="" width="500px" height="250px">
+            <p>Email: chrisng219@gmail.com</p>
+            <p>Phone Number: +060 10 885 8117</p>
+        </div>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 

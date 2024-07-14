@@ -9,6 +9,20 @@ iframe {
     height: 80px;
 }
 
+.logo{
+    margin: 5px;
+}
+
+.position{
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: lighter;
+}
+
+.fs-4{
+    color: #646A73;
+}
+
 footer{
     padding:0 80px;
     margin: 0;
@@ -49,13 +63,6 @@ footer{
 h1{
     margin-bottom: 20px;
     font-weight: 700;
-}
-
-.position{
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: lighter;
-    color: #646A73;
 }
 
 h2{
@@ -141,4 +148,37 @@ button{
     list-style: none;
     margin-right: 80px;
     font-size: large;
+}
+
+.grid-container{
+    display: grid;
+    grid-column: auto auto auto auto;
+    gap: 10px;
+    margin: 50px 0;
+    place-items: center;
+}
+
+.item1{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    text-align: center;
+}
+
+.item2{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    background-color: #faf1f1;
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px rgb(131, 126, 126);
+    padding: 50px;
+    width: 800px;
+    height: 400px;
+}
+
+.row{
+    padding: 10px 0;
+}
+
+.btn{
+    text-align: center;
 }
