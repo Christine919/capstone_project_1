@@ -216,3 +216,47 @@ button{
     margin: 0;
     padding: 0;
 }
+
+.resume-container{
+    display: grid;
+    grid-template-columns: auto 500px 500px 500px auto;
+    grid-template-rows: auto auto auto auto auto;
+    column-gap: 10px;
+    justify-items: center;
+    margin: 50px 0;
+}
+
+.resume-title{
+    grid-column-start: 1;
+    grid-column-end: 6;
+    margin-bottom: 50px;
+}
+
+.resume-desc{
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.resume-img{
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 5;
+}
+
+.resume-container1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 50px 0;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
+
+.resumeBtn{
+    width: 200px;
+    height: 50px;
+    margin: 0 10px;
+}
