@@ -1,0 +1,11 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: PlayfairDisplay-Regular
+font link: https://fonts.google.com/specimen/Playfair+Display
+font author: Claus Eggers Sørensen
+font author site: https://forthehearts.net/
+
+
+{"bg":"transparent","icon-gradient-0":"#4E1A70","icon-gradient-1":"#2B4CF2","font":"#000000","slogan":"#141414"}
+      
