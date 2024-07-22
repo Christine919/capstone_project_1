@@ -36,3 +36,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   
+// about page
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebarItems = document.querySelectorAll('#accordionSidebar .list-group-item');
+    const collapseElements = document.querySelectorAll('.collapse');
+    
+    sidebarItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const targetId = item.getAttribute('data-bs-target');
+            
+            collapseElements.forEach(collapse => {
+                if (collapse.id !== targetId && collapse.classList.contains('show')) {
+                    new bootstrap.Collapse(collapse, {
+                        toggle: false
+                    }).hide();
+                }
+            });
+        });
+    });
+});

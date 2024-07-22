@@ -300,3 +300,91 @@ button{
     font-weight: bold;
     margin-top: 10px;
   }
+
+  /* Basic Reset */
+/* Container and Row */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* List Group Styling */
+.list-group {
+    border-radius: 0;
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    border: 1px solid #ddd;
+    border-radius: 0;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.list-group-item.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 0;
+}
+
+.card-body {
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+/* Responsive Layout */
+@media (min-width: 768px) {
+    .row {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    
+    .col-md-4 {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+    
+    .col-md-8 {
+        flex: 0 0 66.6667%;
+        max-width: 66.6667%;
+    }
+}
+
+@media (max-width: 767px) {
+    .col-md-4, .col-md-8 {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+}
+
+/* Spacing */
+.my-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+}
