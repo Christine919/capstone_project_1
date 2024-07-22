@@ -4,9 +4,9 @@ import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import pkg from 'pg';
+import session from 'express-session';
 
 const { Client } = pkg;
-
 const app = express();
 
 // Get the current directory
@@ -16,13 +16,20 @@ const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", ( req, res ) => {
-  res.sendFile(__dirname + "/public/index.html");
-});
+// Set up sessions
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set to true if using HTTPS
+}));
+
+// Set EJS as the templating engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // PostgreSQL client setup
 const client = new Client({
@@ -34,6 +41,19 @@ const client = new Client({
 });
 
 client.connect();
+
+// Middleware to protect dashboard route
+const requireLogin = (req, res, next) => {
+  if (req.session.user) {
+    next();
+  } else {
+    res.redirect('/login.html');
+  }
+};
+
+app.get("/", ( req, res ) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 // Route to handle form submissions
 app.post('/contact', async (req, res) => {
@@ -49,6 +69,59 @@ app.post('/contact', async (req, res) => {
     console.error(err);
     res.status(500).json({ error: 'Failed to submit' });
   }
+});
+
+// Route to get submissions
+app.get('/submissions', async (req, res) => {
+  try {
+    const result = await client.query('SELECT * FROM contact');
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch submissions' });
+  }
+});
+
+// Route to serve login page
+app.get('/login', (req, res) => {
+  res.render('login', { error: null });
+});
+
+// Route to handle login
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+
+  // For demonstration purposes, a single hard-coded user
+  const user = {
+    username: 'chris',
+    password: 'Geok0323'
+  };
+
+  if (username === user.username && password === user.password) {
+    req.session.user = user;
+    res.redirect('/dashboard');
+  } else if (username !== user.username && password !== user.password) {
+    res.render('login', { error: 'Who are you?' });
+  } else if (username !== user.username) {
+    res.render('login', { error: 'Wrong username' });
+  } else if (password !== user.password) {
+    res.render('login', { error: 'Wrong password' });
+  }
+});
+
+// Route to handle logout
+app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).send('Failed to logout');
+    }
+    res.redirect('/login');
+  });
+});
+
+// Route to serve dashboard with login check
+app.get('/dashboard', requireLogin, (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
 app.listen(3000, () => {
