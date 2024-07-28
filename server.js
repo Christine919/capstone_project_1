@@ -137,6 +137,32 @@ app.get('/dashboard', requireLogin, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
+// Route to mark a submission as read
+app.put('/mark-read/:id', async (req, res) => {
+  const { id } = req.params;
+  
+  try {
+    await client.query('UPDATE contact SET is_read = true WHERE id = $1', [id]);
+    res.status(200).json({ message: 'Submission marked as read.' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to mark submission as read.' });
+  }
+});
+
+// Route to mark a submission as unread
+app.put('/mark-unread/:id', async (req, res) => {
+  const { id } = req.params;
+  
+  try {
+    await client.query('UPDATE contact SET is_read = false WHERE id = $1', [id]);
+    res.status(200).json({ message: 'Submission marked as unread.' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to mark submission as unread.' });
+  }
+});
+
 app.listen(3000, () => {
   console.log('Server running on port 3000');
 });

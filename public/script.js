@@ -57,8 +57,41 @@ document.addEventListener("DOMContentLoaded", () => {
               <td>${submission.phonenum}</td>
               <td>${submission.inquiry}</td>
               <td>${new Date(submission.inquiry_date).toLocaleString()}</td>
+              <td>${submission.is_read ? 'Read' : 'Unread'}</td>
+               <td>
+                  <button class="btn btn-sm btn-primary mark-read-btn" data-id="${submission.id}" ${submission.is_read ? 'disabled' : ''}>Mark as Read</button>
+                  <button class="btn btn-sm btn-secondary mark-unread-btn" data-id="${submission.id}" ${!submission.is_read ? 'disabled' : ''}>Mark as Unread</button>
+                </td>
             `;
             tableBody.appendChild(row);
+          });
+          document.querySelectorAll('.mark-read-btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+              const id = event.target.getAttribute('data-id');
+              fetch(`http://localhost:3000/mark-read/${id}`, {
+                method: 'PUT'
+              })
+              .then(response => response.json())
+              .then(data => {
+                alert(data.message);
+                location.reload(); // Reload to update the table
+              })
+              .catch(error => console.error('Error marking as read:', error));
+            });
+          });
+          document.querySelectorAll('.mark-unread-btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+              const id = event.target.getAttribute('data-id');
+              fetch(`http://localhost:3000/mark-unread/${id}`, {
+                method: 'PUT'
+              })
+              .then(response => response.json())
+              .then(data => {
+                alert(data.message);
+                location.reload(); // Reload to update the table
+              })
+              .catch(error => console.error('Error marking as unread:', error));
+            });
           });
         }
       })

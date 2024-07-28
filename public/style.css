@@ -424,11 +424,6 @@ h2 {
     color: white;
   }
 
-  /* tr:nth-child(even) {
-    background-color: #f2f2f2;
-    color: #007bff;
-  } */
-
   tr:hover {
     background-color: #01396a
   }
@@ -439,6 +434,17 @@ h2 {
     font-size: 18px;
     padding: 20px;
   }
+
+  .mark-read-btn, .mark-unread-btn {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 10px;
+  }
+
+  .btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    border-radius: 20px;
+    padding: 10px 15px;
+}
 
   @media (max-width: 768px) {
     .flex-container {
