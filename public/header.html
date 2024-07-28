@@ -9,21 +9,37 @@
 </head>
 
 <body>
-    <header class="d-flex flex-wrap justify-content-center py-3 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-          <img class="logo" src="./image/logo.png" alt="instagram icon" width="24" height="24">
-          <span class="fs-4"> | <span class="position">FULL STACK DEVELOPER</span> | Christine  Ng</span></span>
-        </a>
-  
-        <ul class="nav nav-pills">
-          <li class="nav-item"><a href="./index.html" class="nav-link active" aria-current="page"  target="_parent">Home</a></li>
-          <li class="nav-item"><a href="./project.html" class="nav-link"  target="_parent">Project</a></li>
-          <li class="nav-item"><a href="./contact.html" class="nav-link"  target="_parent">Contact</a></li>
-          <li class="nav-item"><a href="./about.html" class="nav-link"  target="_parent">About Me</a></li>
-          <!-- <li class="nav-item"><a href="#" class="nav-link">About Me</a></li> -->
-        </ul>
-      </header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar large">
+        <div class="container-fluid">
+          <img class="logo" src="./image/logo.png" alt="instagram icon">
+          <a class="navbar-brand heading-title" href="./index.html">FULL STACK DEVELOPER  | Christine  Ng</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+            <div class="offcanvas-header">
+              <img class="logo" src="./image/logo.png" alt="instagram icon">
+              <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Christine  Ng</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active sub-nav" aria-current="page" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link sub-nav" href="./project.html">Projects</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link sub-nav" href="./contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link sub-nav" href="./about.html">About Me</a>
+                </li>
+            </div>
+          </div>
+        </div>
+      </nav>
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
