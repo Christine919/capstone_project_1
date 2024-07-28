@@ -53,6 +53,7 @@
           <th>Email</th>
           <th>Phone Number</th>
           <th>Inquiry</th>
+          <th>Date</th>
         </tr>
       </thead>
       <tbody>
@@ -64,35 +65,7 @@
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      fetch('http://localhost:3000/submissions')
-        .then(response => response.json())
-        .then(data => {
-          const tableBody = document.querySelector('#submissionsTable tbody');
-          const noSubmissionsDiv = document.querySelector('#noSubmissions');
-          
-          if (data.length === 0) {
-            noSubmissionsDiv.style.display = 'block';
-          } else {
-            noSubmissionsDiv.style.display = 'none';
-            data.forEach(submission => {
-              const row = document.createElement('tr');
-              row.innerHTML = `
-                <td>${submission.fname}</td>
-                <td>${submission.lname}</td>
-                <td>${submission.email}</td>
-                <td>${submission.phonenum}</td>
-                <td>${submission.inquiry}</td>
-              `;
-              tableBody.appendChild(row);
-            });
-          }
-        })
-        .catch(error => console.error('Error fetching submissions:', error));
-    });
-  </script>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="./script.js" defer></script>
 </body>
 </html>

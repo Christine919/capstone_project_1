@@ -1,11 +1,17 @@
 body {
     font-family: 'Times New Roman', Times, serif;
-    background: linear-gradient(to right, #000428, #004e92);
-    color: #fff;
+    background: linear-gradient(to right, #efba8e 0%, #F5E8DD 40%, #F5E8DD 40%, transparent 100%);
 }
 
 p {
     font-size: 22px;
+}
+
+/* header and footer */
+iframe {
+    border: none;
+    width: 100%;
+    height: 80px;
 }
 
 /* header */
@@ -23,30 +29,16 @@ p {
     font-size: 20px;
 }
 
-/* footer */
-.text-body-secondary {
-    --bs-text-opacity: 1;
-    color: rgb(255 255 255 / 75%) !important;
-}
-
-.d-flex {
-    display: flex !important;
-    margin-bottom: 0;
-    margin-top: 10px;
-}
-
 /* home page - index.html */
 h1{
     font-weight: bolder;
     font-size: 50px;
     text-transform: uppercase;
     margin-bottom: 20px;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
 }
 
 h2 {
     margin-bottom: 30px;
-    text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
 }
 
 .flex-container {
@@ -60,9 +52,7 @@ h2 {
     justify-content: center;
     height: 55px;
     width: 500px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    background-color: #ccd3ca;
 }
 
 .profile-info1 {
@@ -71,9 +61,9 @@ h2 {
     align-items: center;
     width: 500px;
     height: 550px;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: #faf1f1;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    box-shadow: 10px 5px 5px rgb(131, 126, 126);
     margin-right: 20px;
 }
 
@@ -81,13 +71,21 @@ h2 {
     height: 250px;
     margin: 30px 0px;
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.d-flex {
+    margin-bottom: 0;
+    margin-top: 10px;
 }
 
 .sm-icons {
     width: 24px;
     height: 24px;
-    filter: drop-shadow(0 0 10px cyan);
+}
+
+.d-flex {
+    display: flex !important;
+    justify-content: center;
 }
 
 .profile-info2 {
@@ -99,7 +97,6 @@ h2 {
     font-size: 80px;
     margin-top: 20px;
     margin-bottom: 20px;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
 }
 
 .profile-info2 h4 {
@@ -108,13 +105,11 @@ h2 {
     letter-spacing: 3px;
     margin-top: 10px;
     font-size: 25px;
-    text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
 }
 
 .profile-info2 a {
     color: inherit;
     text-decoration: none;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
 }
 
 .main-page-btn {
@@ -123,15 +118,24 @@ h2 {
     text-transform: uppercase;
     font-weight: 600;
     border-radius: 20px;
-    background: linear-gradient(45deg, #ff1e56, #ffac41);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
-.main-page-btn:hover {
-    background: linear-gradient(45deg, #ffac41, #ff1e56);
+.main-page-btn {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #406fb5;
+    --bs-btn-border-color:#4070B6;
+    --bs-btn-hover-color: #080707;
+    --bs-btn-hover-bg: #B5C0D0;
+    --bs-btn-hover-border-color: #B5C0D0;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0a58ca;
+    --bs-btn-active-border-color: #0a53be;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #0d6efd;
+    --bs-btn-disabled-border-color: #0d6efd;
+    color: #ffffff;
 }
 
 /* contact page */
@@ -146,8 +150,6 @@ h2 {
 .about-cover {
     width: 500px;
     height: 250px;
-    margin: 10px 0;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
 .item1{
@@ -159,13 +161,12 @@ h2 {
 .item2 {
     grid-column-start: 2;
     grid-column-end: 3;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: #faf1f1;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    box-shadow: 10px 5px 5px rgb(131, 126, 126);
     padding: 50px;
-    margin: 0 30px;
     width: 600px;
-    height: 500px;
+    height: 450px;
 }
 
 #contact-form {
@@ -175,35 +176,7 @@ h2 {
 
   #contact-form input, #contact-form textarea {
     margin: 10px 0;
-    padding: 15px;
-    border-radius: 10px;
-    border: none;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
   }
-
-  #contact-form input::placeholder, #contact-form textarea::placeholder {
-    color: #ccc;
-}
-
-#contact-form input:focus, #contact-form textarea:focus {
-    outline: none;
-    box-shadow: 0 0 10px cyan;
-}
-
-.btn-primary {
-    background: linear-gradient(45deg, #ff1e56, #ffac41);
-    color: #fff;
-    border: none;
-    padding: 10px 40px;
-    border-radius: 20px;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-}
-
-.btn-primary:hover {
-    background: linear-gradient(45deg, #ffac41, #ff1e56);
-}
 
 /* Style for the popup */
 .popup {
@@ -212,7 +185,7 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -220,21 +193,15 @@ h2 {
   }
   
   .popup-content {
-    background: rgba(0, 0, 0, 0.9);
+    background: #ffffff;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
   }
 
   #homeButton {
-    background-color: #406fb5;
-    border-radius: 5px;
-    padding: 10px 20px;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 0 10px cyan;
+    background-color: #CCD3CA;
+        border-radius: 5px;
   }
   
   .hidden {
@@ -257,7 +224,6 @@ h2 {
 
 .p-1{
     text-align: center;
-    font-size: 20px;
 }
   
   /* login page */
@@ -281,13 +247,14 @@ h2 {
   .login-container {
     width: 350px;
     height: 400px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #faf1f1;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    box-shadow: 10px 5px 5px rgb(131, 126, 126);
     padding-top: 30px;
   }
 
   .login-form {
+    border: 5px balck solid;
     margin: 20px;
   }
   
@@ -301,33 +268,21 @@ h2 {
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
   }
-
-.login-form input[type="text"]::placeholder, .login-form input[type="password"]::placeholder {
-    color: #ccc;
-}
-
-.login-form input[type="text"]:focus, .login-form input[type="password"]:focus {
-    outline: none;
-    box-shadow: 0 0 10px cyan;
-}
   
 .login-btn {
     width: 100%;
     padding: 10px;
-    background: linear-gradient(45deg, #ff1e56, #ffac41);
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
 .login-btn:hover {
-    background: linear-gradient(45deg, #ffac41, #ff1e56);
+    background-color: #45a049;
 }
 
   .error {
@@ -336,18 +291,11 @@ h2 {
     margin-top: 10px;
   }
 
-  /* about page */
-  .about-title {
-    padding: 20px 0 0 0;
-}
-
+  /* above page */
 .container {
     max-width: 1200px;
-    padding: 30px;
-    margin-top: 30px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
 /* List Group Styling */
@@ -358,8 +306,6 @@ h2 {
 
 .list-group-item {
     border: 1px solid #ddd;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #007bff;
     border-radius: 0;
     padding: 10px;
     cursor: pointer;
@@ -368,20 +314,17 @@ h2 {
 
 .list-group-item.active {
     background-color: #007bff;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
     color: #fff;
 }
 
 .list-group-item:hover {
     background-color: #f8f9fa;
-    color: #007bff;
 }
 
 /* Card Styling */
 .card {
     border: none;
     border-radius: 0;
-    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .card-body {
@@ -394,15 +337,15 @@ h2 {
     max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
   }
 
   #dashboard > h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #fff;
+    color: #333;
   }
 
   #submissionsTable {
@@ -512,14 +455,10 @@ h2 {
     }
 
     /* contact page */
-    .p-1 {
-        font-size: 12px;
-    }
-
     .about-cover {
         width: 250px;
         height: 150px;
-        margin: 15px 0;
+        margin: 10px;
     }
     
     .item1 {
@@ -536,7 +475,7 @@ h2 {
         grid-column-start: 1;
         grid-column-end: 5;
         width: 350px;
-        height: 450px;
+        height: 400px;
         padding: 20px;
     }
 

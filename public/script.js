@@ -33,10 +33,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   
     homeButton.addEventListener("click", () => {
-      window.location.href = "/index.ejs"; // Redirect to home page
+      window.location.href = "/"; // Redirect to home page
     });
   });
   
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('http://localhost:3000/submissions')
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.querySelector('#submissionsTable tbody');
+        const noSubmissionsDiv = document.querySelector('#noSubmissions');
+
+        if (data.length === 0) {
+          noSubmissionsDiv.style.display = 'block';
+        } else {
+          noSubmissionsDiv.style.display = 'none';
+          data.forEach(submission => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${submission.fname}</td>
+              <td>${submission.lname}</td>
+              <td>${submission.email}</td>
+              <td>${submission.phonenum}</td>
+              <td>${submission.inquiry}</td>
+              <td>${new Date(submission.inquiry_date).toLocaleString()}</td>
+            `;
+            tableBody.appendChild(row);
+          });
+        }
+      })
+      .catch(error => console.error('Error fetching submissions:', error));
+  });
+
 // about page
   document.addEventListener('DOMContentLoaded', function() {
     const sidebarItems = document.querySelectorAll('#accordionSidebar .list-group-item');

@@ -87,7 +87,7 @@ app.post('/contact', async (req, res) => {
 // Route to get submissions
 app.get('/submissions', async (req, res) => {
   try {
-    const result = await client.query('SELECT * FROM contact');
+    const result = await client.query('SELECT * FROM contact ORDER BY inquiry_date DESC');
     res.status(200).json(result.rows);
   } catch (err) {
     console.error(err);
