@@ -51,8 +51,21 @@ const requireLogin = (req, res, next) => {
   }
 };
 
-app.get("/", ( req, res ) => {
-  res.sendFile(__dirname + "/public/index.html");
+// Routes
+app.get("/index.ejs", (req, res) => {
+  res.render('index');
+});
+
+app.get('/project.ejs', (req, res) => {
+  res.render('project');
+});
+
+app.get('/contact.ejs', (req, res) => {
+  res.render('contact');
+});
+
+app.get('/about.ejs', (req, res) => {
+  res.render('about');
 });
 
 // Route to handle form submissions

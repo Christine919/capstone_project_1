@@ -1,5 +1,6 @@
+// contact page
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contactForm");
+    const form = document.getElementById("contact-form");
     const popup = document.getElementById("popup");
     const homeButton = document.getElementById("homeButton");
   
@@ -32,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   
     homeButton.addEventListener("click", () => {
-      window.location.href = "/"; // Redirect to home page
+      window.location.href = "/index.ejs"; // Redirect to home page
     });
   });
   
