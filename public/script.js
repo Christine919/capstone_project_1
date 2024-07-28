@@ -56,3 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const listItems = document.querySelectorAll('#accordionSidebar .list-group-item');
+
+  listItems.forEach(item => {
+      item.addEventListener('click', function() {
+          // Remove active class from all list items
+          listItems.forEach(el => el.classList.remove('active'));
+
+          // Add active class to the clicked item
+          this.classList.add('active');
+      });
+  });
+});
