@@ -52,19 +52,19 @@ const requireLogin = (req, res, next) => {
 };
 
 // Routes
-app.get("/index.ejs", (req, res) => {
+app.get("/", (req, res) => {
   res.render('index');
 });
 
-app.get('/project.ejs', (req, res) => {
+app.get('/project', (req, res) => {
   res.render('project');
 });
 
-app.get('/contact.ejs', (req, res) => {
+app.get('/contact', (req, res) => {
   res.render('contact');
 });
 
-app.get('/about.ejs', (req, res) => {
+app.get('/about', (req, res) => {
   res.render('about');
 });
 

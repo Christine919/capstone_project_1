@@ -73,8 +73,19 @@ h2 {
     border-radius: 50%;
 }
 
+.d-flex {
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
 .sm-icons {
-    margin: 10px 0px;
+    width: 24px;
+    height: 24px;
+}
+
+.d-flex {
+    display: flex !important;
+    justify-content: center;
 }
 
 .profile-info2 {
@@ -130,10 +141,15 @@ h2 {
 /* contact page */
 .grid-container {
     display: grid;
-    grid-column: auto auto auto auto;
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     margin: 50px 0;
     place-items: center;
+}
+
+.about-cover {
+    width: 500px;
+    height: 250px;
 }
 
 .item1{
@@ -366,78 +382,108 @@ h2 {
     padding: 20px;
   }
 
-  /* Responsive Layout */
-/* Extra small devices (phones, <576px) */
-@media (max-width: 575.98px) {
+  @media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 35px 0 0 0;
+    }
+}
+
+@media (max-width: 480px) {
     /* header page */
     .heading-title {
         font-size: 16px;
     }
+    
+    /* home page */
+    h1{
+        font-size: 25px;
+    }
 
-    /* above page */
-    .resume-container {
-        padding: 10px;
-    }
-    .resume-img img {
-        width: 100%;
-        height: auto;
-    }
-    .resume-title h1 {
-        font-size: 24px;
-    }
-}
+    p {
+        font-size: 12px;
+    } 
 
-/* Small devices (tablets, ≥576px) */
-@media (min-width: 576px) {
-    /* above page */
-    .resume-container {
+    .flex-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 35px 0 0 0;
+    }
+    
+    .card01{
+        width: 350px;
+    }
+
+    .profile-info1 {
+        width: 350px;
+        height: 400px;
+        margin-left: 20px;
+    }
+
+    .profile-image {
+        height: 150px;
+    }
+
+    .profile-info2 {
+        padding: 0x;
+    }
+
+    .profile-info2 h3 {
+        font-size: 50px;
+    }
+    
+    .profile-info2 h4 {
+        font-size: 16px;
+    }
+
+    .main-page-btn {
+        margin: 15px 5px;
+        padding: 8px 20px;
+        font-weight: 600;
+        border-radius: 15px;
+        font-size: 16px;
+    }
+
+    .d-flex {
+        margin-top: 5px;
+    }
+    
+    .sm-icons {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* contact page */
+    .about-cover {
+        width: 250px;
+        height: 150px;
+        margin: 10px;
+    }
+    
+    .item1 {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 5;
+        text-align: center;
+    }
+
+    .item2 {
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 5;
+        width: 350px;
+        height: 400px;
         padding: 20px;
     }
-    .resume-title h1 {
-        font-size: 28px;
-    }
-}
 
-/* Medium devices (desktops, ≥768px) */
-@media (min-width: 768px) {
-    /* above page */
-    .resume-container {
-        padding: 30px;
-    }
-    .resume-title h1 {
-        font-size: 32px;
-    }
-}
-
-/* Large devices (desktops, ≥992px) */
-@media (min-width: 992px) {
-    /* above page */
-    .resume-container {
-        padding: 40px;
-    }
-    .resume-title h1 {
-        font-size: 36px;
-    }
-}
-
-/* Extra large devices (large desktops, ≥1200px) */
-@media (min-width: 1200px) {
-    /* above page */
-    .resume-container {
-        padding: 50px;
-    }
-    .resume-title h1 {
-        font-size: 40px;
-    }
-}
-
-/* XXL devices (very large desktops, ≥1400px) */
-@media (min-width: 1400px) {
-    /* above page */
-    .resume-container {
-        padding: 60px;
-    }
-    .resume-title h1 {
-        font-size: 44px;
+    .item3 {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 5;
+        text-align: center;
     }
 }
