@@ -4,10 +4,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "react-scripts test",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject"
+   "build": "prisma generate && next build",
+   "dev": "next dev",
+   "start": "next start"
   },
   "author": "",
   "license": "ISC",
