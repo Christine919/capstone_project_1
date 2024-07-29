@@ -5,7 +5,6 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import pkg from 'pg';
 import session from 'express-session';
-import session from 'express-session';
 import pgSession from 'connect-pg-simple';
 import { PrismaClient } from '@prisma/client';
 
