@@ -1,3 +1,4 @@
+import rateLimit from 'express-rate-limit';
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -7,6 +8,7 @@ import pkg from 'pg';
 import session from 'express-session';
 import pgSession from 'connect-pg-simple';
 import { PrismaClient } from '@prisma/client';
+
 
 const { Client } = pkg;
 const app = express();
