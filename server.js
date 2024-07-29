@@ -12,6 +12,16 @@ import { PrismaClient } from '@prisma/client';
 const { Client } = pkg;
 const app = express();
 
+// Rate Limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+
+app.use(limiter);
+
 // Get the current directory
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
