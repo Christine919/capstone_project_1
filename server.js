@@ -9,6 +9,9 @@ import connectPgSimple from 'connect-pg-simple';
 import { PrismaClient } from '@prisma/client';
 import rateLimit from 'express-rate-limit';
 
+// Initialize Prisma Client
+const prisma = new PrismaClient();
+
 // Set up PostgreSQL client
 const { Pool } = pg;
 const PgSession = connectPgSimple(session); // Initialize session store
@@ -189,8 +192,6 @@ app.put('/mark-unread/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to mark submission as unread.' });
   }
 });
-
-const prisma = new PrismaClient();
 
 async function createUser(name, email, password) {
   const user = await prisma.user.create({
