@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import c from 'pg';
+import pg from 'pg';
 import session from 'express-session';
 import connectPgSimple from 'connect-pg-simple';
 import { PrismaClient } from '@prisma/client';
