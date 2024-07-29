@@ -10,10 +10,33 @@ import { PrismaClient } from '@prisma/client';
 import rateLimit from 'express-rate-limit';
 
 // Set up PostgreSQL client
-const { Pool } = pg; // Correctly destructure Pool from pg
+const { Pool } = pg;
 const PgSession = connectPgSimple(session); // Initialize session store
 
 const app = express();
+
+// Get the current directory
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Set up PostgreSQL pool
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL, // Use environment variable
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+// PostgreSQL client setup
+const client = new pg.Client({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'portfolio',
+  password: 'Geok0323',
+  port: 5432,
+});
+
+client.connect();
 
 // Rate Limiting
 const limiter = rateLimit({
@@ -22,10 +45,6 @@ const limiter = rateLimit({
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
-
-// Get the current directory
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 app.use(limiter);
 app.use(express.json());
@@ -46,35 +65,16 @@ app.use(session({
   cookie: { secure: false } // Set to true if using HTTPS
 }));
 
-// Set up PostgreSQL pool
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, // Use environment variable
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
-
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
-// PostgreSQL client setup
-const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'portfolio',
-  password: 'Geok0323',
-  port: 5432,
-});
-
-client.connect();
 
 // Middleware to protect dashboard route
 const requireLogin = (req, res, next) => {
   if (req.session.user) {
     next();
   } else {
-    res.redirect('/login.html');
+    res.redirect('/login');
   }
 };
 
@@ -206,5 +206,3 @@ async function createUser(name, email, password) {
 app.listen(3000, () => {
   console.log('Server running on port 3000');
 });
-
-
