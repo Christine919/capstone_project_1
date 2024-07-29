@@ -5,6 +5,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import pkg from 'pg';
 import session from 'express-session';
+import session from 'express-session';
+import pgSession from 'connect-pg-simple';
+import { PrismaClient } from '@prisma/client';
 
 const { Client } = pkg;
 const app = express();
@@ -21,6 +24,26 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up sessions
 app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set to true if using HTTPS
+}));
+
+// Set up PostgreSQL pool
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL, // Use environment variable
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+// Set up sessions with connect-pg-simple
+app.use(session({
+  store: new (pgSession(session))({
+    pool: pool,
+    tableName: 'session'
+  }),
   secret: 'your_secret_key',
   resave: false,
   saveUninitialized: true,
@@ -162,6 +185,19 @@ app.put('/mark-unread/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to mark submission as unread.' });
   }
 });
+
+const prisma = new PrismaClient();
+
+async function createUser(name, email, password) {
+  const user = await prisma.user.create({
+    data: {
+      name,
+      email,
+      password,
+    },
+  });
+  return user;
+}
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');

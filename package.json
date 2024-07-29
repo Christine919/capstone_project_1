@@ -4,8 +4,10 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "start server.js"
+    "test": "react-scripts test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
   },
   "author": "",
   "license": "ISC",
@@ -13,11 +15,13 @@
   "description": "",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "connect-pg-simple": "^9.0.1",
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "mongoose": "^8.5.1",
-    "pg": "^8.12.0"
+    "pg": "^8.12.0",
+    "prisma": "^5.17.0"
   }
 }
