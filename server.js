@@ -10,9 +10,6 @@ import connectPgSimple from 'connect-pg-simple';
 import { PrismaClient } from '@prisma/client';
 import rateLimit from 'express-rate-limit';
 
-// Initialize Prisma Client
-const prisma = new PrismaClient();
-
 // Debugging Prisma Client Initialization
 async function testPrisma() {
   try {
@@ -216,6 +213,9 @@ async function createUser(name, email, password) {
   });
   return user;
 }
+
+// Initialize Prisma Client
+const prisma = new PrismaClient();
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
