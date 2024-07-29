@@ -1,3 +1,4 @@
+import 'dotenv/config'; // This will load variables from .env into process.env
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
