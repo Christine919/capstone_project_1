@@ -12,7 +12,19 @@ import rateLimit from 'express-rate-limit';
 // Initialize Prisma Client
 const prisma = new PrismaClient();
 
-// Set up PostgreSQL client
+// Debugging Prisma Client Initialization
+async function testPrisma() {
+  try {
+    await prisma.$connect();
+    console.log('Prisma Client connected successfully');
+  } catch (error) {
+    console.error('Error connecting Prisma Client:', error);
+  }
+}
+
+// Run the Prisma test function
+testPrisma();
+
 const { Pool } = pg;
 const PgSession = connectPgSimple(session); // Initialize session store
 
