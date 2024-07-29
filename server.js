@@ -1,16 +1,18 @@
-import rateLimit from 'express-rate-limit';
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import pkg from 'pg';
+import c from 'pg';
 import session from 'express-session';
-import pgSession from 'connect-pg-simple';
+import connectPgSimple from 'connect-pg-simple';
 import { PrismaClient } from '@prisma/client';
+import rateLimit from 'express-rate-limit';
 
+// Set up PostgreSQL client
+const { Pool } = pg; // Correctly destructure Pool from pg
+const PgSession = connectPgSimple(session); // Initialize session store
 
-const { Client } = pkg;
 const app = express();
 
 // Rate Limiting
@@ -21,12 +23,11 @@ const limiter = rateLimit({
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
-app.use(limiter);
-
 // Get the current directory
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -35,6 +36,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up sessions
 app.use(session({
+  store: new PgSession({
+    pool: pool, // Use the pool instance here
+    tableName: 'session'
+  }),
   secret: 'your_secret_key',
   resave: false,
   saveUninitialized: true,
@@ -48,18 +53,6 @@ const pool = new Pool({
     rejectUnauthorized: false
   }
 });
-
-// Set up sessions with connect-pg-simple
-app.use(session({
-  store: new (pgSession(session))({
-    pool: pool,
-    tableName: 'session'
-  }),
-  secret: 'your_secret_key',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false } // Set to true if using HTTPS
-}));
 
 // Set EJS as the templating engine
 app.set('view engine', 'ejs');
