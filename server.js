@@ -1,65 +1,18 @@
-import 'dotenv/config'; // This will load variables from .env into process.env
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import pg from 'pg';
+import pkg from 'pg';
 import session from 'express-session';
-import connectPgSimple from 'connect-pg-simple';
-import { PrismaClient } from '@prisma/client';
-import rateLimit from 'express-rate-limit';
 
-// Debugging Prisma Client Initialization
-async function testPrisma() {
-  try {
-    await prisma.$connect();
-    console.log('Prisma Client connected successfully');
-  } catch (error) {
-    console.error('Error connecting Prisma Client:', error);
-  }
-}
-
-// Run the Prisma test function
-testPrisma();
-
-const { Pool } = pg;
-const PgSession = connectPgSimple(session); // Initialize session store
-
+const { Client } = pkg;
 const app = express();
 
 // Get the current directory
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Set up PostgreSQL pool
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, // Use environment variable
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
-
-// PostgreSQL client setup
-const client = new pg.Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'portfolio',
-  password: 'Geok0323',
-  port: 5432,
-});
-
-client.connect();
-
-// Rate Limiting
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
-});
-
-app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -68,10 +21,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up sessions
 app.use(session({
-  store: new PgSession({
-    pool: pool, // Use the pool instance here
-    tableName: 'session'
-  }),
   secret: 'your_secret_key',
   resave: false,
   saveUninitialized: true,
@@ -82,12 +31,23 @@ app.use(session({
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// PostgreSQL client setup
+const client = new Client({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'portfolio',
+  password: 'Geok0323',
+  port: 5432,
+});
+
+client.connect();
+
 // Middleware to protect dashboard route
 const requireLogin = (req, res, next) => {
   if (req.session.user) {
     next();
   } else {
-    res.redirect('/login');
+    res.redirect('/login.html');
   }
 };
 
@@ -202,20 +162,6 @@ app.put('/mark-unread/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to mark submission as unread.' });
   }
 });
-
-async function createUser(name, email, password) {
-  const user = await prisma.user.create({
-    data: {
-      name,
-      email,
-      password,
-    },
-  });
-  return user;
-}
-
-// Initialize Prisma Client
-const prisma = new PrismaClient();
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
