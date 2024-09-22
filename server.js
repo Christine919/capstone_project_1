@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up sessions
 app.use(session({
-  secret: 'your_secret_key',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false } // Set to true if using HTTPS
@@ -33,11 +33,11 @@ app.set('views', path.join(__dirname, 'views'));
 
 // PostgreSQL client setup
 const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'portfolio',
-  password: 'Geok0323',
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
 client.connect();

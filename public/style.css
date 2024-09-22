@@ -46,7 +46,8 @@ h1{
 
 h2 {
     margin-bottom: 30px;
-    text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+    text-shadow: 0 0 10px rgba(221, 255, 0, 0.8);
+    color: white;
 }
 
 .flex-container {
@@ -71,7 +72,7 @@ h2 {
     align-items: center;
     width: 500px;
     height: 550px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(42, 28, 89, 0.5);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
     margin-right: 20px;
@@ -87,7 +88,7 @@ h2 {
 .sm-icons {
     width: 24px;
     height: 24px;
-    filter: drop-shadow(0 0 10px cyan);
+    filter: drop-shadow(0 0 10px rgb(255, 255, 255));
 }
 
 .profile-info2 {
